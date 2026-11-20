@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diana & Alejandro · 19 de diciembre de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#FDF2DF; --oro:#C2A242; --oro-claro:#E4CF8E; --cafe:#5E3420; --cafe-suave:#8a6a56;
+  --script:'Pinyon Script','Snell Roundhand',cursive;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--serif);background:var(--crema);color:var(--cafe);font-size:20px;line-height:1.6;overflow-x:hidden}
+body.bloqueado{overflow:hidden;height:100vh}
+section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;overflow:hidden}
+.crema{background:var(--crema)}
+.dorado{background:var(--oro);color:var(--crema)}
+.script{font-family:var(--script);font-weight:400;line-height:1.1}
+.wrap{max-width:980px;margin:0 auto;position:relative;z-index:2}
+
+/* ---------- Espacios de imagen ---------- */
+.slot{position:relative;background:rgba(255,255,255,.35);overflow:hidden}
+.slot img{display:block;width:100%;height:100%;object-fit:cover}
+.slot.empty{border:1.5px dashed currentColor;display:flex;align-items:center;justify-content:center;opacity:.9}
+.slot.empty img{display:none}
+.slot.empty::after{content:attr(data-label);font-size:.8rem;font-style:italic;padding:12px;opacity:.8;max-width:80%}
+.marco{padding:8px;border:1px solid var(--oro-claro);outline:1px solid var(--oro-claro);outline-offset:6px}
+.dorado .marco{border-color:var(--crema);outline-color:rgba(253,242,223,.6)}
+
+/* ---------- Decoración floral: grande y de fondo ---------- */
+.deco{position:absolute;z-index:0;pointer-events:none;width:clamp(260px,46vw,620px);height:clamp(300px,52vw,700px)}
+.deco img{width:100%;height:70%;object-fit:contain}
+.deco.empty{border:1px dashed var(--oro);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--oro);opacity:.6}
+.deco.empty img{display:none}
+.deco.empty::after{content:attr(data-label);padding:6px;text-align:center}
+.dorado .deco.empty{border-color:var(--crema);color:var(--crema)}
+.tl{top:-4%;left:-6%}.tr{top:-4%;right:-6%}.bl{bottom:-4%;left:-6%}.br{bottom:-4%;right:-6%}
+.deco.cb{bottom:-3%;left:0;right:0;margin:0 auto;width:clamp(320px,84vw,920px);height:clamp(130px,24vw,280px)}
+.flip{scale:-1 1}
+
+/* ---------- Pantalla de entrada ---------- */
+#portada{position:fixed;inset:0;z-index:100;background:var(--oro);color:var(--crema);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;text-align:center;transition:transform 1.4s cubic-bezier(.77,0,.18,1),opacity 1.4s}
+#portada.abierta{transform:translateY(-100%);opacity:.4;pointer-events:none}
+#portada .mono{font-family:var(--script);font-size:clamp(3.4rem,14vw,6rem);line-height:1}
+#portada p{font-style:italic;letter-spacing:.04em}
+.sello{width:112px;height:112px;border-radius:50%;border:1px solid var(--crema);background:transparent;color:var(--crema);font-family:var(--script);font-size:1.7rem;cursor:pointer;position:relative;transition:background .4s,color .4s,transform .4s}
+.sello::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(253,242,223,.45);animation:pulso 2.4s ease-out infinite}
+.sello:hover,.sello:focus-visible{background:var(--crema);color:var(--oro);transform:scale(1.05);outline:none}
+@keyframes pulso{0%{transform:scale(.92);opacity:1}100%{transform:scale(1.25);opacity:0}}
+
+/* ---------- Portada principal ---------- */
+#inicio{min-height:100vh;display:flex;align-items:center;justify-content:center}
+#inicio .nos{font-size:clamp(2.8rem,10vw,5rem);color:var(--oro)}
+#inicio h1{font-size:clamp(4.2rem,17vw,9.5rem);color:var(--cafe);font-weight:400;margin:6px 0 18px}
+#inicio h1 span{display:block}
+#inicio h1 .y{font-size:.5em;color:var(--oro)}
+#inicio .fecha{letter-spacing:.24em;font-size:clamp(1.25rem,4.2vw,2rem);text-transform:uppercase}
+.bajar{display:inline-block;margin-top:40px;width:1px;height:56px;background:linear-gradient(var(--oro),transparent);animation:baja 2s ease-in-out infinite}
+@keyframes baja{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+/* ---------- Historia ---------- */
+.dos-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;text-align:center}
+.foto-v{aspect-ratio:3/4;width:100%;max-width:380px;margin:0 auto}
+.titulo-onda{display:inline-block;padding:22px 46px;border:1px solid var(--crema);border-radius:48% 52% 46% 54% / 36% 40% 60% 64%;outline:1px solid rgba(253,242,223,.55);outline-offset:7px;margin-bottom:28px}
+.titulo-onda h2{font-size:clamp(2.6rem,7vw,3.8rem);font-weight:400}
+.texto{max-width:46ch;margin:0 auto}
+
+/* ---------- Detalles ---------- */
+#detalles .lugar{font-size:clamp(1.5rem,4.5vw,2.1rem);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+#detalles .cuando{letter-spacing:.14em;color:var(--cafe-suave);margin-bottom:10px}
+#detalles .faltan{font-size:2.4rem;color:var(--oro);margin-top:14px}
+.reloj{display:flex;justify-content:center;gap:clamp(10px,3vw,26px);margin:6px 0 28px}
+.reloj div{min-width:68px}
+.reloj b{display:block;font-size:clamp(2.4rem,9vw,3.6rem);font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.reloj small{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe-suave)}
+.reloj div:last-child b{color:var(--oro)}
+.dir{font-size:.95rem;color:var(--cafe-suave);margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border:1px solid var(--oro);color:var(--cafe);background:transparent;text-decoration:none;font:inherit;font-size:1rem;letter-spacing:.08em;cursor:pointer;transition:background .35s,color .35s}
+.btn:hover,.btn:focus-visible{background:var(--oro);color:var(--crema);outline:none}
+.btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4}
+
+/* ---------- Mensaje ---------- */
+#mensaje h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400}
+.filete{width:min(280px,60%);height:1px;background:linear-gradient(90deg,transparent,var(--crema),transparent);margin:34px auto 28px}
+#mensaje blockquote{max-width:34ch;margin:0 auto 24px;font-size:clamp(1.3rem,3.6vw,1.6rem)}
+#mensaje .esperamos{font-size:clamp(2.4rem,7vw,3.4rem);margin-top:30px}
+
+/* ---------- Galería ---------- */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.galeria .slot{aspect-ratio:4/5}
+.galeria .slot:nth-child(2){margin-top:30px}
+#galeria h2,#libro h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400;color:var(--oro)}
+#confirmar h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400}
+.dorado h2{color:var(--crema)!important}
+
+/* ---------- Tarjetas con formulario ---------- */
+.card{background:var(--crema);color:var(--cafe);border:1px solid var(--oro-claro);border-radius:28px;padding:clamp(26px,5vw,46px);max-width:560px;margin:34px auto 0;text-align:left;box-shadow:0 18px 50px rgba(94,52,32,.16)}
+.card .corazon{width:54px;height:54px;border:1px solid var(--oro-claro);border-radius:50%;margin:0 auto 14px;display:flex;align-items:center;justify-content:center;color:var(--oro)}
+.card .corazon svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.5}
+.card h3{font-family:var(--script);font-weight:400;font-size:2.3rem;text-align:center;line-height:1.1}
+.card .sub{text-align:center;font-style:italic;color:var(--cafe-suave);font-size:1rem;margin-bottom:6px}
+.card label{display:block;font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--cafe-suave);margin-top:24px}
+.card input,.card select,.card textarea{width:100%;font:inherit;font-size:1.15rem;color:var(--cafe);background:transparent;border:0;border-bottom:1px solid var(--oro);border-radius:0;padding:8px 0 10px;outline:none;transition:border-color .3s}
+.card textarea{resize:vertical;min-height:110px;line-height:1.5}
+.card select{appearance:none;-webkit-appearance:none;cursor:pointer;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' fill='none' stroke='%23C2A242' stroke-width='1.6'%3E%3Cpath d='M1 1l6 6 6-6'/%3E%3C/svg%3E") right 4px center no-repeat}
+.card input:focus,.card select:focus,.card textarea:focus{border-bottom-color:var(--cafe)}
+.card ::placeholder{color:var(--cafe-suave);opacity:.55}
+.card .hp{position:absolute;left:-9999px;width:1px;height:1px;opacity:0}
+.fila-personas[hidden]{display:none}
+.enviar{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;margin-top:30px;padding:15px 24px;border:1px solid var(--oro);background:var(--oro);color:var(--crema);font:inherit;font-size:1rem;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:4px;outline:1px solid var(--oro-claro);outline-offset:4px;transition:background .35s,color .35s}
+.enviar:hover,.enviar:focus-visible{background:var(--crema);color:var(--oro)}
+.enviar:disabled{opacity:.6;cursor:wait}
+.enviar svg{width:20px;height:20px;fill:currentColor}
+.estado{min-height:1.5em;margin-top:14px;font-size:.95rem;text-align:center;font-style:italic;color:var(--cafe-suave)}
+.estado.error{color:#9b3b2b}
+
+/* ---------- Contacto ---------- */
+.dudas{margin-top:48px;font-style:italic}
+.contactos{display:grid;grid-template-columns:1fr 1fr;margin:20px auto 0;max-width:640px}
+.contactos div{padding:0 20px}
+.contactos div+div{border-left:1px solid rgba(253,242,223,.6)}
+.contactos h3{font-weight:500;font-size:1.4rem;margin-bottom:6px}
+.contactos a{color:inherit;text-decoration:none;display:block}
+.contactos small{display:block;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;opacity:.85;margin-top:8px}
+
+/* ---------- Libro de firmas ---------- */
+#libro .intro{max-width:44ch;margin:18px auto 0;font-style:italic;color:var(--cafe-suave)}
+.lista{max-width:720px;margin:44px auto 0;display:grid;gap:16px;text-align:left}
+.firma{border:1px solid var(--oro-claro);background:rgba(255,255,255,.5);border-radius:18px;padding:20px 24px}
+.firma p{font-style:italic;font-size:1.1rem;white-space:pre-wrap;overflow-wrap:anywhere}
+.firma b{display:block;margin-top:8px;font-family:var(--script);font-weight:400;font-size:1.6rem;color:var(--oro)}
+.vacio{text-align:center;font-style:italic;color:var(--cafe-suave)}
+.mas{margin:22px auto 0;display:none}
+.pie{margin-top:70px;font-size:clamp(2.4rem,7vw,3.4rem);color:var(--oro)}
+
+/* ---------- Música ---------- */
+#musica{position:fixed;right:18px;bottom:18px;z-index:90;width:48px;height:48px;border-radius:50%;border:1px solid var(--oro);background:var(--crema);color:var(--oro);cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(94,52,32,.18)}
+#musica.on{display:flex}
+#musica svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+#musica .x{display:none}#musica.silencio .x{display:block}#musica.silencio .o{display:none}
+
+/* ---------- Animaciones de entrada ---------- */
+.rv{opacity:0;transition:opacity 1.1s ease,transform 1.2s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.up{transform:translateY(34px)}
+.rv.izq{transform:translateX(-60px)}
+.rv.der{transform:translateX(60px)}
+.rv.zoom{transform:scale(.92)}
+.rv.visto{opacity:1;transform:none}
+.deco.rv{transition-duration:1.8s}
+
+@media (max-width:760px){
+  body{font-size:18px}
+  .deco{width:78vw;height:88vw}
+  .deco.cb{width:110vw;height:34vw}
+  .dos-col{grid-template-columns:1fr}
+  .invertir .foto-v{order:-1}
+  .galeria{grid-template-columns:1fr 1fr}
+  .galeria .slot:nth-child(2){margin-top:0}
+  .galeria .slot:nth-child(3){grid-column:1/-1;aspect-ratio:16/10}
+  .contactos{grid-template-columns:1fr;gap:28px}
+  .contactos div+div{border-left:0;border-top:1px solid rgba(253,242,223,.6);padding-top:24px}
+  .rv.izq,.rv.der{transform:translateY(34px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .sello::before,.bajar{animation:none}
+  #portada{transition:opacity .4s}
+}
+</style>
+</head>
+<body class="bloqueado">
+
+<!-- Música: coloca tu archivo en la misma carpeta con este nombre -->
+<audio id="audio" src="musica.mp3" loop preload="auto"></audio>
+
+<!-- ============ PANTALLA DE ENTRADA ============ -->
+<div id="portada">
+  <p>Estás invitado a la boda de</p>
+  <div class="mono">D <span style="font-size: .7em">&</span> A</div>
+  <button class="sello" id="abrir" aria-label="Abrir invitación">Abrir</button>
+  <p style="font-size:.9rem">Toca para abrir la invitación</p>
+</div>
+
+<!-- ============ PORTADA ============ -->
+<section id="inicio" class="crema">
+  <div class="deco tl rv zoom" data-label="Flor esquina superior izquierda · img/flor-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco tr rv zoom" style="--d:.2s" data-label="Flor esquina superior derecha · img/flor-2.png"><img src="img/flor-2.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco bl rv zoom" style="--d:.4s" data-label="Hojas esquina inferior izquierda · img/flor-3.png"><img src="img/flor-3.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco br rv zoom" style="--d:.6s" data-label="Flor esquina inferior derecha · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+
+  <div class="wrap">
+    <p class="nos script rv up">Nos casamos</p>
+    <h1 class="script rv up" style="--d:.3s"><span>Diana</span><span class="y">&</span><span>Alejandro</span></h1>
+    <p class="fecha rv up" style="--d:.7s">Diciembre 19, 2026</p>
+    <span class="bajar rv" style="--d:1.2s"></span>
+  </div>
+</section>
+
+<!-- ============ NUESTRA HISTORIA ============ -->
+<section id="historia" class="dorado">
+  <div class="wrap dos-col">
+    <div class="rv izq">
+      <div class="marco foto-v"><div class="slot" style="width:100%;height:100%" data-label="Foto 1 (vertical) · img/foto-1.jpg"><img src="img/foto-1.jpg" alt="Diana y Alejandro" onerror="this.parentNode.classList.add('empty')"></div></div>
+    </div>
+    <div class="rv der" style="--d:.2s">
+      <div class="titulo-onda"><h2 class="script">Nuestra<br>Historia</h2></div>
+      <p class="texto">No fue casualidad encontrarnos, fue el destino quien cruzó nuestros caminos. Y entre tantas personas en el mundo, nos elegimos para compartir la vida. Hoy unimos nuestras manos y nuestros sueños, con la promesa de caminar juntos, de amarnos en cada etapa, y de elegirnos todos los días.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETALLES ============ -->
+<section id="detalles" class="crema">
+  <div class="wrap dos-col invertir">
+    <div class="rv izq">
+      <div class="marco foto-v"><div class="slot" style="width:100%;height:100%" data-label="Foto 2 (vertical) · img/foto-2.jpg"><img src="img/foto-2.jpg" alt="Diana y Alejandro" onerror="this.parentNode.classList.add('empty')"></div></div>
+    </div>
+    <div class="rv der" style="--d:.2s">
+      <p class="lugar">Cuajimalpa de Morelos, CDMX.</p>
+      <p class="cuando">19 · 12 · 2026 &nbsp;|&nbsp; 16:00 horas</p>
+      <p class="faltan script">Faltan</p>
+      <div class="reloj" id="reloj" aria-live="off">
+        <div><b id="d">--</b><small>Días</small></div>
+        <div><b id="h">--</b><small>Horas</small></div>
+        <div><b id="m">--</b><small>Minutos</small></div>
+        <div><b id="s">--</b><small>Segundos</small></div>
+      </div>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Calle+Ocampo+195+Cuajimalpa+05000+CDMX">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Ver ubicación
+      </a>
+      <p class="dir">Calle Ocampo 195, Cuajimalpa, C.P. 05000, CDMX</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENSAJE ============ -->
+<section id="mensaje" class="dorado">
+  <div class="deco bl rv zoom" data-label="Planta decorativa · img/planta-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco br rv zoom" style="--d:.2s" data-label="Planta decorativa · img/planta-2.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="wrap">
+    <h2 class="script rv up">Queridos amigos y familia</h2>
+    <div class="filete rv up" style="--d:.2s"></div>
+    <blockquote class="rv up" style="--d:.35s">“El amor nos ha traído hasta aquí, y hoy queremos celebrar el inicio de una nueva etapa rodeados de las personas que han sido importantes en nuestro camino.”</blockquote>
+    <p class="rv up" style="--d:.5s">Gracias por acompañarnos y ser parte de este día tan especial.</p>
+    <p class="esperamos script rv up" style="--d:.7s">¡Los esperamos!</p>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section id="galeria" class="crema">
+  <div class="wrap">
+    <h2 class="script rv up">Nuestros momentos</h2>
+    <div class="galeria">
+      <div class="slot rv up" style="color:var(--oro)" data-label="Foto galería 1 · img/galeria-1.jpg"><img src="img/foto-5.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:.2s;color:var(--oro)" data-label="Foto galería 2 · img/galeria-2.jpg"><img src="img/foto-4.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:.4s;color:var(--oro)" data-label="Foto galería 3 · img/galeria-3.jpg"><img src="img/foto-3.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONFIRMAR ASISTENCIA ============ -->
+<section id="confirmar" class="dorado">
+  <div class="deco tl rv zoom" data-label="Hojas · img/hojas-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco cb rv zoom" style="--d:.4s" data-label="Guirnalda inferior · img/guirnalda.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="wrap" style="padding-bottom:90px">
+    <h2 class="script rv up">Confirma tu asistencia</h2>
+    <div class="filete rv up" style="--d:.15s"></div>
+    <p class="rv up" style="--d:.25s">Nos ayudará mucho saber si nos acompañarás.</p>
+
+    <form class="card rv up" id="f-rsvp" style="--d:.35s" novalidate>
+      <div class="corazon"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></div>
+      <h3>Confirmar tu lugar</h3>
+      <p class="sub">Con mucho amor</p>
+
+      <label for="r-nombre">Nombre completo</label>
+      <input id="r-nombre" type="text" placeholder="Ej. Andrea Ramírez" autocomplete="name" maxlength="80">
+
+      <label for="r-asiste">¿Podrás acompañarnos?</label>
+      <select id="r-asiste">
+        <option value="si">¡Sí, ahí estaré!</option>
+        <option value="no">Lamentablemente no podré asistir</option>
+      </select>
+
+      <div class="fila-personas" id="fila-personas">
+        <label for="r-personas">¿Cuántos asistirán?</label>
+        <select id="r-personas">
+          <option value="1">1 persona</option>
+          <option value="2">2 personas</option>
+          <option value="3">3 personas</option>
+          <option value="4">4 personas</option>
+          <option value="5">5 personas</option>
+        </select>
+      </div>
+
+      <button class="enviar" type="submit">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2a9.9 9.9 0 0 0-8.5 15l-1.5 5 5.1-1.4A10 10 0 1 0 12.04 2zm5.8 14c-.25.7-1.4 1.3-1.95 1.4-.5.1-1.15.1-1.85-.1-.4-.15-.95-.3-1.6-.6-2.8-1.2-4.6-4-4.75-4.2-.15-.2-1.15-1.5-1.15-2.9 0-1.4.7-2.05 1-2.35.25-.3.55-.35.75-.35h.55c.2 0 .4 0 .6.45.25.55.8 1.95.85 2.1.1.15.1.3 0 .5-.1.2-.15.3-.3.45l-.45.5c-.15.15-.3.3-.15.6.15.3.7 1.15 1.5 1.85 1.05.9 1.9 1.2 2.2 1.3.3.15.45.1.6-.1.2-.2.7-.8.9-1.1.2-.3.35-.25.6-.15l1.95.95c.25.15.45.2.5.3.1.1.1.65-.15 1.35z"/></svg>
+        Confirmar por WhatsApp
+      </button>
+      <p class="estado" id="r-estado" role="status"></p>
+    </form>
+
+    <p class="dudas rv up">¿Tienes dudas? Escríbenos.</p>
+    <div class="contactos rv up" style="--d:.15s">
+      <div><h3>Diana</h3><small>Teléfono</small><a href="tel:+525535744177">55 3574 4177</a><small>Correo</small><a href="mailto:diana@correo.com">diana@correo.com</a></div>
+      <div><h3>Alejandro</h3><small>Teléfono</small><a href="tel:+525591969447">55 9196 9447</a><small>Correo</small><a href="mailto:andrsalezz@gmail.com">andrsalezz@gmail.com</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ LIBRO DE FIRMAS ============ -->
+<section id="libro" class="crema">
+  
+  <div class="deco br rv zoom" style="--d:.2s" data-label="Flor decorativa · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="wrap">
+    <h2 class="script rv up">Libro de firmas</h2>
+    <p class="intro rv up" style="--d:.15s">Déjanos unas palabras para volver a este día una y otra vez. Tu mensaje formará parte de nuestra historia.</p>
+
+    <form class="card rv up" id="f-firma" style="--d:.3s" novalidate>
+      <label for="l-nombre" style="margin-top:0">Tu nombre</label>
+      <input id="l-nombre" type="text" placeholder="Ej. Familia Ramírez" maxlength="80">
+      <label for="l-mensaje">Tu mensaje para los novios</label>
+      <textarea id="l-mensaje" placeholder="Escribe aquí tus buenos deseos…" maxlength="500"></textarea>
+      <input class="hp" id="l-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">
+      <button class="enviar" type="submit" id="l-btn">Firmar el libro</button>
+      <p class="estado" id="l-estado" role="status"></p>
+    </form>
+
+    <div class="lista" id="lista" aria-live="polite"></div>
+    <button class="btn mas" id="mas" type="button">Ver más mensajes</button>
+
+    <p class="pie script rv up">Con amor, Diana & Alejandro</p>
+  </div>
+</section>
+
+<!-- Botón música -->
+<button id="musica" aria-label="Silenciar o reanudar música">
+  <svg viewBox="0 0 24 24"><g class="o"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></g><g class="x"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path d="M3 3l18 18"/></g></svg>
+</button>
+
+<script>
+/* ====== CONFIGURA AQUÍ ====== */
+const FECHA_BODA = new Date('2026-12-19T16:00:00-06:00'); // hora de CDMX
+const WHATSAPP   = '525535744177';  // 52 + número, sin espacios ni +
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyb1uSaAsgdYze5-DifJaq-6sNSej7Ox4yyt4mk9QIaH-LR5g26Gtl3wZ-8jjkJ0TNdSw/exec';              // pega aquí la URL de tu Apps Script (ver apps-script.gs)
+/* ============================ */
+
+const $ = id => document.getElementById(id);
+const audio = $('audio'), btnMusica = $('musica');
+
+/* ---------- Entrada + música ---------- */
+$('abrir').addEventListener('click', () => {
+  $('portada').classList.add('abierta');
+  document.body.classList.remove('bloqueado');
+  btnMusica.classList.add('on');
+  audio.volume = 0.7;
+  audio.play().catch(() => btnMusica.classList.add('silencio'));
+  window.scrollTo(0, 0);
+  setTimeout(animarVisibles, 500);
+});
+btnMusica.addEventListener('click', () => {
+  if (audio.paused) { audio.play(); btnMusica.classList.remove('silencio'); }
+  else { audio.pause(); btnMusica.classList.add('silencio'); }
+});
+
+/* ---------- Animaciones al hacer scroll ---------- */
+const io = new IntersectionObserver((entradas) => {
+  entradas.forEach(e => { if (e.isIntersecting && !document.body.classList.contains('bloqueado')) { e.target.classList.add('visto'); io.unobserve(e.target); } });
+}, { threshold: .15 });
+const elementos = document.querySelectorAll('.rv');
+elementos.forEach(el => io.observe(el));
+function animarVisibles(){ elementos.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight * .9) el.classList.add('visto'); }); }
+
+/* ---------- Cuenta regresiva ---------- */
+function reloj(){
+  let t = Math.max(0, FECHA_BODA - new Date());
+  const dd = Math.floor(t / 864e5); t %= 864e5;
+  const hh = Math.floor(t / 36e5);  t %= 36e5;
+  const mm = Math.floor(t / 6e4);   t %= 6e4;
+  $('d').textContent = dd; $('h').textContent = String(hh).padStart(2,'0');
+  $('m').textContent = String(mm).padStart(2,'0'); $('s').textContent = String(Math.floor(t/1e3)).padStart(2,'0');
+}
+reloj(); setInterval(reloj, 1000);
+
+/* ---------- Confirmación por WhatsApp ---------- */
+$('r-asiste').addEventListener('change', () => { $('fila-personas').hidden = $('r-asiste').value === 'no'; });
+$('f-rsvp').addEventListener('submit', e => {
+  e.preventDefault();
+  const nombre = $('r-nombre').value.trim(), estado = $('r-estado');
+  if (!nombre) { estado.className = 'estado error'; estado.textContent = 'Escribe tu nombre para continuar.'; $('r-nombre').focus(); return; }
+  estado.className = 'estado'; estado.textContent = 'Abriendo WhatsApp…';
+  let msg;
+  if ($('r-asiste').value === 'si') {
+    const n = Number($('r-personas').value);
+    msg = `Hola, soy ${nombre}. ¡Confirmo mi asistencia a la boda de Diana y Alejandro! Asistiremos ${n} ${n === 1 ? 'persona' : 'personas'}.`;
+  } else {
+    msg = `Hola, soy ${nombre}. Lamentablemente no podré asistir a la boda de Diana y Alejandro. ¡Les deseo lo mejor!`;
+  }
+  window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank', 'noopener');
+});
+
+/* ---------- Libro de firmas (Google Sheets) ---------- */
+const LS_KEY = 'firmas_demo';
+let firmas = [], visibles = 6;
+const lista = $('lista'), btnMas = $('mas');
+
+function pintar(){
+  lista.textContent = '';
+  if (!firmas.length) {
+    const p = document.createElement('p'); p.className = 'vacio'; p.textContent = 'Aún no hay firmas. ¡Sé la primera persona en dejar unas palabras!';
+    lista.appendChild(p);
+  }
+  firmas.slice(0, visibles).forEach(f => {
+    const d = document.createElement('div'); d.className = 'firma';
+    const p = document.createElement('p'); p.textContent = f.mensaje;
+    const b = document.createElement('b'); b.textContent = f.nombre;
+    d.append(p, b); lista.appendChild(d);
+  });
+  btnMas.style.display = firmas.length > visibles ? 'inline-flex' : 'none';
+}
+btnMas.addEventListener('click', () => { visibles += 6; pintar(); });
+
+async function cargarFirmas(){
+  if (SHEETS_URL) {
+    try { const r = await fetch(SHEETS_URL); firmas = await r.json(); } catch (_) {}
+  } else {
+    try { firmas = JSON.parse(localStorage.getItem(LS_KEY) || '[]'); } catch (_) {}   // modo demo
+  }
+  pintar();
+}
+
+$('f-firma').addEventListener('submit', async e => {
+  e.preventDefault();
+  if ($('l-hp').value) return;                       // anti-spam
+  const nombre = $('l-nombre').value.trim(), mensaje = $('l-mensaje').value.trim();
+  const estado = $('l-estado'), btn = $('l-btn');
+  if (!nombre || !mensaje) { estado.className = 'estado error'; estado.textContent = 'Escribe tu nombre y tu mensaje.'; return; }
+  btn.disabled = true; estado.className = 'estado'; estado.textContent = 'Enviando…';
+  try {
+    if (SHEETS_URL) {
+      await fetch(SHEETS_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ nombre, mensaje }) });
+    }
+    firmas.unshift({ nombre, mensaje });
+    if (!SHEETS_URL) { try { localStorage.setItem(LS_KEY, JSON.stringify(firmas)); } catch (_) {} }
+    $('l-nombre').value = ''; $('l-mensaje').value = '';
+    estado.textContent = '¡Gracias! Tu mensaje ya está en nuestro libro.';
+    pintar();
+  } catch (_) {
+    estado.className = 'estado error'; estado.textContent = 'No se pudo enviar. Inténtalo de nuevo.';
+  }
+  btn.disabled = false;
+});
+cargarFirmas();
+</script>
+</body>
+</html>

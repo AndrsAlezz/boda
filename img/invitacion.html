@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diana & Alejandro · 19 de diciembre de 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --crema:#FDF2DF; --oro:#C2A242; --oro-claro:#E4CF8E; --cafe:#5E3420; --cafe-suave:#8a6a56;
+  --script:'Pinyon Script','Snell Roundhand',cursive;
+  --serif:'Cormorant Garamond',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--serif);background:var(--crema);color:var(--cafe);font-size:20px;line-height:1.6;overflow-x:hidden}
+body.bloqueado{overflow:hidden;height:100vh}
+section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;overflow:hidden}
+.crema{background:var(--crema)}
+.dorado{background:var(--oro);color:var(--crema)}
+.script{font-family:var(--script);font-weight:400;line-height:1.1}
+.wrap{max-width:980px;margin:0 auto;position:relative;z-index:2}
+
+/* ---------- Espacios de imagen ---------- */
+.slot{position:relative;background:rgba(255,255,255,.35);overflow:hidden}
+.slot img{display:block;width:100%;height:100%;object-fit:cover}
+.slot.empty{border:1.5px dashed currentColor;display:flex;align-items:center;justify-content:center;opacity:.9}
+.slot.empty img{display:none}
+.slot.empty::after{content:attr(data-label);font-size:.8rem;font-style:italic;padding:12px;opacity:.8;max-width:80%}
+.marco{padding:8px;border:1px solid var(--oro-claro);outline:1px solid var(--oro-claro);outline-offset:6px}
+.dorado .marco{border-color:var(--crema);outline-color:rgba(253,242,223,.6)}
+
+/* Decoración floral (PNG transparente) */
+.deco{position:absolute;z-index:1;pointer-events:none;width:clamp(120px,24vw,320px);height:clamp(140px,28vw,380px);opacity:.9}
+.deco img{width:100%;height:100%;object-fit:contain}
+.deco.empty{border:1px dashed var(--oro);display:flex;align-items:center;justify-content:center;font-size:.7rem;color:var(--oro);opacity:.6}
+.deco.empty img{display:none}
+.deco.empty::after{content:attr(data-label);padding:6px;text-align:center}
+.dorado .deco.empty{border-color:var(--crema);color:var(--crema)}
+.tl{top:0;left:0}.tr{top:0;right:0}.bl{bottom:0;left:0}.br{bottom:0;right:0}
+.cb{bottom:0;left:50%;transform:translateX(-50%);width:clamp(200px,50vw,520px);height:clamp(80px,14vw,160px)}
+.flip{transform:scaleX(-1)}
+
+/* ---------- Portada (pantalla de entrada) ---------- */
+#portada{position:fixed;inset:0;z-index:100;background:var(--oro);color:var(--crema);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;text-align:center;transition:transform 1.4s cubic-bezier(.77,0,.18,1),opacity 1.4s}
+#portada.abierta{transform:translateY(-100%);opacity:.4;pointer-events:none}
+#portada .mono{font-family:var(--script);font-size:clamp(3.4rem,14vw,6rem);line-height:1}
+#portada p{font-style:italic;letter-spacing:.04em}
+.sello{width:112px;height:112px;border-radius:50%;border:1px solid var(--crema);background:transparent;color:var(--crema);font-family:var(--script);font-size:1.7rem;cursor:pointer;position:relative;transition:background .4s,color .4s,transform .4s}
+.sello::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(253,242,223,.45);animation:pulso 2.4s ease-out infinite}
+.sello:hover,.sello:focus-visible{background:var(--crema);color:var(--oro);transform:scale(1.05);outline:none}
+@keyframes pulso{0%{transform:scale(.92);opacity:1}100%{transform:scale(1.25);opacity:0}}
+
+/* ---------- Portada principal ---------- */
+#inicio{min-height:100vh;display:flex;align-items:center;justify-content:center}
+#inicio .nos{font-size:clamp(2rem,6vw,3rem);color:var(--oro)}
+#inicio h1{font-size:clamp(4.2rem,17vw,9.5rem);color:var(--cafe);font-weight:400;margin:6px 0 18px}
+#inicio h1 span{display:block}
+#inicio h1 .y{font-size:.5em;color:var(--oro)}
+#inicio .fecha{letter-spacing:.28em;font-size:clamp(1rem,3vw,1.35rem);text-transform:uppercase}
+.bajar{display:inline-block;margin-top:40px;width:1px;height:56px;background:linear-gradient(var(--oro),transparent);animation:baja 2s ease-in-out infinite}
+@keyframes baja{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
+
+/* ---------- Historia ---------- */
+.dos-col{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,6vw,80px);align-items:center;text-align:center}
+.foto-v{aspect-ratio:3/4;width:100%;max-width:380px;margin:0 auto}
+.titulo-onda{display:inline-block;padding:22px 46px;border:1px solid var(--crema);border-radius:48% 52% 46% 54% / 36% 40% 60% 64%;outline:1px solid rgba(253,242,223,.55);outline-offset:7px;margin-bottom:28px}
+.titulo-onda h2{font-size:clamp(2.6rem,7vw,3.8rem);font-weight:400}
+.texto{max-width:46ch;margin:0 auto}
+
+/* ---------- Detalles ---------- */
+#detalles .lugar{font-size:clamp(1.5rem,4.5vw,2.1rem);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
+#detalles .cuando{letter-spacing:.14em;color:var(--cafe-suave);margin-bottom:10px}
+#detalles .faltan{font-size:2.4rem;color:var(--oro);margin-top:14px}
+.reloj{display:flex;justify-content:center;gap:clamp(10px,3vw,26px);margin:6px 0 28px}
+.reloj div{min-width:68px}
+.reloj b{display:block;font-size:clamp(2.4rem,9vw,3.6rem);font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
+.reloj small{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe-suave)}
+.reloj div:last-child b{color:var(--oro)}
+.dir{font-size:.95rem;color:var(--cafe-suave);margin-top:14px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border:1px solid var(--oro);color:var(--cafe);background:transparent;text-decoration:none;font:inherit;font-size:1rem;letter-spacing:.08em;cursor:pointer;transition:background .35s,color .35s}
+.btn:hover,.btn:focus-visible{background:var(--oro);color:var(--crema);outline:none}
+.btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4}
+.dorado .btn{border-color:var(--crema);color:var(--crema)}
+.dorado .btn:hover,.dorado .btn:focus-visible{background:var(--crema);color:var(--oro)}
+
+/* ---------- Mensaje ---------- */
+#mensaje h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400}
+.filete{width:min(280px,60%);height:1px;background:linear-gradient(90deg,transparent,var(--crema),transparent);margin:14px auto 28px}
+#mensaje blockquote{max-width:34ch;margin:0 auto 24px;font-size:clamp(1.3rem,3.6vw,1.6rem)}
+#mensaje .esperamos{font-size:clamp(2.4rem,7vw,3.4rem);margin-top:30px}
+
+/* ---------- Galería ---------- */
+.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
+.galeria .slot{aspect-ratio:4/5}
+.galeria .slot:nth-child(2){margin-top:30px}
+#galeria h2,#confirmar h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400;color:var(--oro)}
+.dorado h2{color:var(--crema)!important}
+
+/* ---------- Confirmación / contacto ---------- */
+.contactos{display:grid;grid-template-columns:1fr 1fr;margin:34px auto;max-width:640px}
+.contactos div{padding:0 20px}
+.contactos div+div{border-left:1px solid rgba(253,242,223,.6)}
+.contactos h3{font-weight:500;font-size:1.4rem;margin-bottom:6px}
+.contactos a{color:inherit;text-decoration:none;display:block}
+.contactos small{display:block;letter-spacing:.2em;font-size:.72rem;text-transform:uppercase;opacity:.85;margin-top:8px}
+
+/* ---------- Música ---------- */
+#musica{position:fixed;right:18px;bottom:18px;z-index:90;width:48px;height:48px;border-radius:50%;border:1px solid var(--oro);background:var(--crema);color:var(--oro);cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(94,52,32,.18)}
+#musica.on{display:flex}
+#musica svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.6}
+#musica .x{display:none}#musica.silencio .x{display:block}#musica.silencio .o{display:none}
+
+/* ---------- Animaciones de entrada ---------- */
+.rv{opacity:0;transition:opacity 1.1s ease,transform 1.2s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.rv.up{transform:translateY(34px)}
+.rv.izq{transform:translateX(-60px)}
+.rv.der{transform:translateX(60px)}
+.rv.zoom{transform:scale(.92)}
+.rv.visto{opacity:1;transform:none}
+.deco.rv{transition-duration:1.8s}
+
+@media (max-width:760px){
+  body{font-size:18px}
+  .dos-col{grid-template-columns:1fr}
+  .invertir .foto-v{order:-1}
+  .galeria{grid-template-columns:1fr 1fr}
+  .galeria .slot:nth-child(2){margin-top:0}
+  .galeria .slot:nth-child(3){grid-column:1/-1;aspect-ratio:16/10}
+  .contactos{grid-template-columns:1fr;gap:28px}
+  .contactos div+div{border-left:0;border-top:1px solid rgba(253,242,223,.6);padding-top:24px}
+  .rv.izq,.rv.der{transform:translateY(34px)}
+}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1;transform:none;transition:none}
+  .sello::before,.bajar{animation:none}
+  #portada{transition:opacity .4s}
+}
+</style>
+</head>
+<body class="bloqueado">
+
+<!-- Música: coloca tu archivo en la misma carpeta con este nombre -->
+<audio id="audio" src="musica.mp3" loop preload="auto"></audio>
+
+<!-- ============ PANTALLA DE ENTRADA ============ -->
+<div id="portada">
+  <p>Estás invitado a la boda de</p>
+  <div class="mono">D <span style="font-size: .7em">&</span> A</div>
+  <button class="sello" id="abrir" aria-label="Abrir invitación">Abrir</button>
+  <p style="font-size:.9rem">Toca para abrir la invitación</p>
+</div>
+
+<!-- ============ PORTADA ============ -->
+<section id="inicio" class="crema">
+  <div class="deco tl slot-deco rv zoom" data-label="Flor esquina superior izquierda · img/flor-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco tr rv zoom" style="--d:.2s" data-label="Flor esquina superior derecha · img/flor-2.png"><img src="img/flor-2.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco bl rv zoom" style="--d:.4s" data-label="Hojas esquina inferior izquierda · img/flor-3.png"><img src="img/flor-3.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco br rv zoom" style="--d:.6s" data-label="Flor esquina inferior derecha · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+
+  <div class="wrap">
+    <p class="nos script rv up" id="h1">Nos casamos</p>
+    <h1 class="script rv up" id="h2" style="--d:.3s"><span>Diana</span><span class="y">&</span><span>Alejandro</span></h1>
+    <p class="fecha rv up" id="h1" style="--d:.7s">Diciembre 19, 2026</p>
+    <span class="bajar rv" style="--d:1.2s"></span>
+  </div>
+</section>
+
+<!-- ============ NUESTRA HISTORIA ============ -->
+<section id="historia" class="dorado">
+  <div class="wrap dos-col">
+    <div class="rv izq">
+      <div class="marco foto-v"><div class="slot" style="width:100%;height:100%" data-label="Foto 1 (vertical) · img/foto-1.jpg"><img src="img/foto-1.jpg" alt="Diana y Alejandro" onerror="this.parentNode.classList.add('empty')"></div></div>
+    </div>
+    <div class="rv der" style="--d:.2s">
+      <div class="titulo-onda"><h2 class="script">Nuestra<br>Historia</h2></div>
+      <p class="texto">No fue casualidad encontrarnos, fue el destino quien cruzó nuestros caminos. Y entre tantas personas en el mundo, nos elegimos para compartir la vida. Hoy unimos nuestras manos y nuestros sueños, con la promesa de caminar juntos, de amarnos en cada etapa, y de elegirnos todos los días.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DETALLES ============ -->
+<section id="detalles" class="crema">
+  <div class="wrap dos-col invertir">
+    <div class="rv izq">
+      <div class="marco foto-v"><div class="slot" style="width:100%;height:100%" data-label="Foto 2 (vertical) · img/foto-2.jpg"><img src="img/foto-2.jpg" alt="Diana y Alejandro" onerror="this.parentNode.classList.add('empty')"></div></div>
+    </div>
+    <div class="rv der" style="--d:.2s">
+      <p class="lugar">Cuajimalpa de Morelos, CDMX.</p>
+      <p class="cuando">19 · 12 · 2026 &nbsp;|&nbsp; 16:00 horas</p>
+      <p class="faltan script">Faltan</p>
+      <div class="reloj" id="reloj" aria-live="off">
+        <div><b id="d">--</b><small>Días</small></div>
+        <div><b id="h">--</b><small>Horas</small></div>
+        <div><b id="m">--</b><small>Minutos</small></div>
+        <div><b id="s">--</b><small>Segundos</small></div>
+      </div>
+      <a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Calle+Ocampo+195+Cuajimalpa+05000+CDMX">
+        <svg viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></svg>
+        Ver ubicación
+      </a>
+      <p class="dir">Calle Ocampo 195, Cuajimalpa, C.P. 05000, CDMX</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ MENSAJE ============ -->
+<section id="mensaje" class="dorado">
+  <div class="deco bl rv zoom" data-label="Planta decorativa · img/planta-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco br rv zoom" style="--d:.2s" data-label="Planta decorativa · img/planta-2.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="wrap">
+    <h2 class="script rv up">Queridos amigos y familia</h2>
+    <div class="filete rv up" style="--d:.2s"></div>
+    <blockquote class="rv up" style="--d:.35s">“El amor nos ha traído hasta aquí, y hoy queremos celebrar el inicio de una nueva etapa rodeados de las personas que han sido importantes en nuestro camino.”</blockquote>
+    <p class="rv up" style="--d:.5s">Gracias por acompañarnos y ser parte de este día tan especial.</p>
+    <p class="esperamos script rv up" style="--d:.7s">¡Los esperamos!</p>
+  </div>
+</section>
+
+<!-- ============ GALERÍA ============ -->
+<section id="galeria" class="crema">
+  <div class="deco tl rv zoom" data-label="Flor decorativa · img/flor-5.png"><img src="img/flor-2.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco tr flip rv zoom" style="--d:.2s" data-label="Flor decorativa · img/flor-6.png"><img src="img/flor-3.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="wrap">
+    <h2 class="script rv up">Nuestros momentos</h2>
+    <div class="galeria">
+      <div class="slot rv up" style="color:var(--oro)" data-label="Foto galería 1 · img/galeria-1.jpg"><img src="img/foto-5.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:.2s;color:var(--oro)" data-label="Foto galería 2 · img/galeria-2.jpg"><img src="img/foto-4.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:.4s;color:var(--oro)" data-label="Foto galería 3 · img/galeria-3.jpg"><img src="img/foto-3.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CONFIRMAR / CONTACTO ============ -->
+<section id="confirmar" class="dorado">
+  <div class="deco tl rv zoom" data-label="Hojas · img/hojas-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco tr rv zoom" style="--d:.2s" data-label="Flor · img/flor-7.png"><img src="img/flor-2.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco cb rv zoom" style="--d:.4s" data-label="Guirnalda inferior · img/guirnalda.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="wrap" style="padding-bottom:90px">
+    <h2 class="script rv up">Confirma tu asistencia</h2>
+    <div class="filete rv up" style="--d:.15s"></div>
+    <p class="rv up" style="--d:.25s">Nos ayudará mucho saber si nos acompañarás.</p>
+    <div class="contactos rv up" style="--d:.4s">
+      <div><h3>Diana</h3><small>Teléfono</small><a href="tel:+525535744177">55 3574 4177</a><small>Correo</small><a href="mailto:diana@correo.com">diana@correo.com</a></div>
+      <div><h3>Alejandro</h3><small>Teléfono</small><a href="tel:+525591969447">55 9196 9447</a><small>Correo</small><a href="mailto:andrsalezz@gmail.com">andrsalezz@gmail.com</a></div>
+    </div>
+    <a class="btn rv up" style="--d:.55s" id="wa" target="_blank" rel="noopener" href="#">Confirmar por WhatsApp</a>
+  </div>
+</section>
+
+<!-- Botón música -->
+<button id="musica" aria-label="Pausar o reanudar música">
+  <svg viewBox="0 0 24 24"><g class="o"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></g><g class="x"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/><path d="M3 3l18 18"/></g></svg>
+</button>
+
+<script>
+/* ====== CONFIGURA AQUÍ ====== */
+const FECHA_BODA = new Date('2026-12-19T16:00:00-06:00'); // hora de CDMX
+const WHATSAPP   = '525535744177'; // 52 + tu número, sin espacios ni +
+const MENSAJE_WA = 'Hola, confirmo mi asistencia a la boda de Diana y Alejandro. Nombre: ';
+/* ============================ */
+
+const audio = document.getElementById('audio');
+const btnMusica = document.getElementById('musica');
+
+// Entrada: el toque del invitado habilita el audio
+document.getElementById('abrir').addEventListener('click', () => {
+  document.getElementById('portada').classList.add('abierta');
+  document.body.classList.remove('bloqueado');
+  btnMusica.classList.add('on');
+  audio.volume = 0.7;
+  audio.play().catch(() => btnMusica.classList.add('silencio'));
+  window.scrollTo(0, 0);
+  setTimeout(animarVisibles, 500);
+});
+btnMusica.addEventListener('click', () => {
+  if (audio.paused) { audio.play(); btnMusica.classList.remove('silencio'); }
+  else { audio.pause(); btnMusica.classList.add('silencio'); }
+});
+
+// Animaciones al hacer scroll
+const io = new IntersectionObserver((entradas) => {
+  entradas.forEach(e => { if (e.isIntersecting && !document.body.classList.contains('bloqueado')) { e.target.classList.add('visto'); io.unobserve(e.target); } });
+}, { threshold: .18 });
+const elementos = document.querySelectorAll('.rv');
+elementos.forEach(el => io.observe(el));
+function animarVisibles(){ elementos.forEach(el => { const r = el.getBoundingClientRect(); if (r.top < innerHeight * .9) el.classList.add('visto'); }); }
+
+// Cuenta regresiva
+const $ = id => document.getElementById(id);
+function reloj(){
+  let t = Math.max(0, FECHA_BODA - new Date());
+  const dd = Math.floor(t / 864e5); t %= 864e5;
+  const hh = Math.floor(t / 36e5);  t %= 36e5;
+  const mm = Math.floor(t / 6e4);   t %= 6e4;
+  $('d').textContent = dd; $('h').textContent = String(hh).padStart(2,'0');
+  $('m').textContent = String(mm).padStart(2,'0'); $('s').textContent = String(Math.floor(t/1e3)).padStart(2,'0');
+}
+reloj(); setInterval(reloj, 1000);
+
+// WhatsApp
+$('wa').href = `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(MENSAJE_WA)}`;
+</script>
+</body>
+</html>
