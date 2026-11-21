@@ -6,12 +6,13 @@
 <title>Diana & Alejandro · 19 de diciembre de 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Gilda+Display&display=swap" rel="stylesheet">
 <style>
 :root{
-  --crema:#FDF2DF; --oro:#C2A242; --oro-claro:#E4CF8E; --cafe:#5E3420; --cafe-suave:#8a6a56; --negro:#666259;
+  --crema:#FDF2DF; --oro:#C2A242; --oro-claro:#E4CF8E; --cafe:#5E3420; --cafe-suave:#8a6a56;
   --script:'Pinyon Script','Snell Roundhand',cursive;
   --serif:'Cormorant Garamond',Georgia,serif;
+  --gilda:'Gilda Display','Cormorant Garamond',Georgia,serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -43,12 +44,26 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 .deco.cb{bottom:-3%;left:0;right:0;margin:0 auto;width:clamp(320px,84vw,920px);height:clamp(130px,24vw,280px)}
 .flip{scale:-1 1}
 
+/* Flor pequeña del libro de firmas */
+.deco.mini{top:auto;right:auto;bottom:0;left:8px;width:clamp(90px,14vw,170px);height:clamp(100px,16vw,190px)}
+.deco.mini img{height:100%}
+#libro{padding-bottom:clamp(160px,20vw,220px)}
+
+/* Distribución de flores (portada y mensaje) */
+.dist .deco{width:clamp(200px,28vw,380px);height:clamp(230px,33vw,440px)}
+.dist .f-izq{top:20%;left:-10%}
+.dist .f-sup{top:-4%;right:-7%}
+.dist .f-der{top:50%;right:-13%}
+.dist .f-inf{bottom:-4%;left:-9%}
+#inicio .f-izq{top:13%;left:-14%}
+#inicio .f-der{top:57.5%;right:-15%}
+
 /* ---------- Pantalla de entrada ---------- */
-#portada{position:fixed;inset:0;z-index:100;background:var(--oro);color:var(--crema);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;padding:24px;text-align:center;transition:transform 1.4s cubic-bezier(.77,0,.18,1),opacity 1.4s}
+#portada{position:fixed;inset:0;z-index:100;background:var(--oro);color:var(--crema);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:38px;padding:24px;text-align:center;transition:transform 1.4s cubic-bezier(.77,0,.18,1),opacity 1.4s}
 #portada.abierta{transform:translateY(-100%);opacity:.4;pointer-events:none}
-#portada .mono{font-family:var(--script);font-size:clamp(3.4rem,14vw,6rem);line-height:1}
-#portada p{font-style:italic;letter-spacing:.04em}
-.sello{width:112px;height:112px;border-radius:50%;border:1px solid var(--crema);background:transparent;color:var(--crema);font-family:var(--script);font-size:1.7rem;cursor:pointer;position:relative;transition:background .4s,color .4s,transform .4s}
+#portada .mono{font-family:var(--script);font-size:clamp(5.4rem,24vw,10rem);line-height:1}
+#portada p{font-style:italic;letter-spacing:.04em;font-size:clamp(1.6rem,6vw,2.6rem);line-height:1.2}
+.sello{width:150px;height:150px;border-radius:50%;border:1px solid var(--crema);background:transparent;color:var(--crema);font-family:var(--script);font-size:2.4rem;cursor:pointer;position:relative;transition:background .4s,color .4s,transform .4s}
 .sello::before{content:"";position:absolute;inset:-9px;border-radius:50%;border:1px solid rgba(253,242,223,.45);animation:pulso 2.4s ease-out infinite}
 .sello:hover,.sello:focus-visible{background:var(--crema);color:var(--oro);transform:scale(1.05);outline:none}
 @keyframes pulso{0%{transform:scale(.92);opacity:1}100%{transform:scale(1.25);opacity:0}}
@@ -59,7 +74,7 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 #inicio h1{font-size:clamp(4.2rem,17vw,9.5rem);color:var(--cafe);font-weight:400;margin:6px 0 18px}
 #inicio h1 span{display:block}
 #inicio h1 .y{font-size:.5em;color:var(--oro)}
-#inicio .fecha{letter-spacing:.24em;font-size:clamp(1.25rem,4.2vw,2rem);text-transform:uppercase}
+#inicio .fecha{font-family:var(--gilda);letter-spacing:.2em;font-size:clamp(1.25rem,4.2vw,2rem);text-transform:uppercase}
 .bajar{display:inline-block;margin-top:40px;width:1px;height:56px;background:linear-gradient(var(--oro),transparent);animation:baja 2s ease-in-out infinite}
 @keyframes baja{0%,100%{transform:scaleY(.4);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}}
 
@@ -71,15 +86,15 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 .texto{max-width:46ch;margin:0 auto}
 
 /* ---------- Detalles ---------- */
-#detalles .lugar{font-size:clamp(1.5rem,4.5vw,2.1rem);letter-spacing:.06em;text-transform:uppercase;font-weight:500}
-#detalles .cuando{letter-spacing:.14em;color:var(--cafe-suave);margin-bottom:10px}
+#detalles .lugar{font-size:clamp(1.5rem,4.5vw,2.1rem);letter-spacing:.06em;text-transform:uppercase;font-weight:400;font-family:var(--gilda)}
+#detalles .cuando{font-family:var(--gilda);font-size:1.15rem;letter-spacing:.14em;color:var(--cafe-suave);margin-bottom:10px}
 #detalles .faltan{font-size:2.4rem;color:var(--oro);margin-top:14px}
 .reloj{display:flex;justify-content:center;gap:clamp(10px,3vw,26px);margin:6px 0 28px}
 .reloj div{min-width:68px}
-.reloj b{display:block;font-size:clamp(2.4rem,9vw,3.6rem);font-weight:500;line-height:1;font-variant-numeric:tabular-nums}
-.reloj small{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe-suave)}
+.reloj b{font-family:var(--gilda);display:block;font-size:clamp(2.4rem,9vw,3.6rem);font-weight:400;line-height:1;font-variant-numeric:tabular-nums}
+.reloj small{font-family:var(--gilda);font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cafe-suave)}
 .reloj div:last-child b{color:var(--oro)}
-.dir{font-size:.95rem;color:var(--cafe-suave);margin-top:14px}
+.dir{font-family:var(--gilda);letter-spacing:.04em;font-size:.95rem;color:var(--cafe-suave);margin-top:14px}
 .btn{display:inline-flex;align-items:center;gap:10px;padding:13px 30px;border:1px solid var(--oro);color:var(--cafe);background:transparent;text-decoration:none;font:inherit;font-size:1rem;letter-spacing:.08em;cursor:pointer;transition:background .35s,color .35s}
 .btn:hover,.btn:focus-visible{background:var(--oro);color:var(--crema);outline:none}
 .btn svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.4}
@@ -91,9 +106,12 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 #mensaje .esperamos{font-size:clamp(2.4rem,7vw,3.4rem);margin-top:30px}
 
 /* ---------- Galería ---------- */
-.galeria{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px}
-.galeria .slot{aspect-ratio:4/5}
-.galeria .slot:nth-child(2){margin-top:30px}
+.galeria{display:grid;gap:10px;max-width:760px;margin:40px auto 0}
+.g-fila{display:grid;gap:10px;align-items:start}
+.g-fila.a{grid-template-columns:minmax(0,9fr) minmax(0,9fr) minmax(0,16fr) minmax(0,9fr)}
+.g-fila.b{grid-template-columns:minmax(0,16fr) minmax(0,9fr) minmax(0,9fr) minmax(0,9fr)}
+.galeria .slot{aspect-ratio:3/4}
+.galeria .slot.h{aspect-ratio:4/3}
 #galeria h2,#libro h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400;color:var(--oro)}
 #confirmar h2{font-size:clamp(2.6rem,8vw,4rem);font-weight:400}
 .dorado h2{color:var(--crema)!important}
@@ -136,7 +154,7 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 .firma b{display:block;margin-top:8px;font-family:var(--script);font-weight:400;font-size:1.6rem;color:var(--oro)}
 .vacio{text-align:center;font-style:italic;color:var(--cafe-suave)}
 .mas{margin:22px auto 0;display:none}
-.pie{margin-top:70px;font-size:clamp(2.4rem,7vw,3.4rem);color:var(--negro)}
+.pie{margin-top:70px;font-size:clamp(2.4rem,7vw,3.4rem);color:var(--oro)}
 
 /* ---------- Música ---------- */
 #musica{position:fixed;right:18px;bottom:18px;z-index:90;width:48px;height:48px;border-radius:50%;border:1px solid var(--oro);background:var(--crema);color:var(--oro);cursor:pointer;display:none;align-items:center;justify-content:center;box-shadow:0 4px 18px rgba(94,52,32,.18)}
@@ -156,12 +174,11 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 @media (max-width:760px){
   body{font-size:18px}
   .deco{width:78vw;height:88vw}
+  .dist .deco{width:54vw;height:62vw}
   .deco.cb{width:110vw;height:34vw}
   .dos-col{grid-template-columns:1fr}
   .invertir .foto-v{order:-1}
-  .galeria{grid-template-columns:1fr 1fr}
-  .galeria .slot:nth-child(2){margin-top:0}
-  .galeria .slot:nth-child(3){grid-column:1/-1;aspect-ratio:16/10}
+  .galeria,.g-fila{gap:6px}
   .contactos{grid-template-columns:1fr;gap:28px}
   .contactos div+div{border-left:0;border-top:1px solid rgba(253,242,223,.6);padding-top:24px}
   .rv.izq,.rv.der{transform:translateY(34px)}
@@ -180,18 +197,18 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 
 <!-- ============ PANTALLA DE ENTRADA ============ -->
 <div id="portada">
-  <p>Estás invitado a la boda de</p>
-  <div class="mono">D <span style="font-size: .9em">&</span> A</div>
+  <p>Estás invitado a nuestra boda</p>
+  <div class="mono">D <span style="font-size: .7em">&</span> A</div>
   <button class="sello" id="abrir" aria-label="Abrir invitación">Abrir</button>
-  <p style="font-size:.9rem">Toca para abrir la invitación</p>
+  <p style="font-size:1.2rem">Toca para abrir la invitación</p>
 </div>
 
 <!-- ============ PORTADA ============ -->
-<section id="inicio" class="crema">
-  <div class="deco tl rv zoom" data-label="Flor esquina superior izquierda · img/flor-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
-  <div class="deco tr rv zoom" style="--d:.2s" data-label="Flor esquina superior derecha · img/flor-2.png"><img src="img/flor-2.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
-  <div class="deco bl rv zoom" style="--d:.4s" data-label="Hojas esquina inferior izquierda · img/flor-3.png"><img src="img/flor-3.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
-  <div class="deco br rv zoom" style="--d:.6s" data-label="Flor esquina inferior derecha · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+<section id="inicio" class="crema dist">
+  <div class="deco f-izq rv zoom" data-label="Flor izquierda · img/flor-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco f-sup rv zoom" style="--d:.2s" data-label="Flor superior derecha · img/flor-2.png"><img src="img/flor-2.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco f-inf rv zoom" style="--d:.4s" data-label="Hojas inferior izquierda · img/flor-3.png"><img src="img/flor-3.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco f-der rv zoom" style="--d:.6s" data-label="Flor derecha · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
 
   <div class="wrap">
     <p class="nos script rv up">Nos casamos</p>
@@ -240,9 +257,9 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
 </section>
 
 <!-- ============ MENSAJE ============ -->
-<section id="mensaje" class="dorado">
-  <div class="deco bl rv zoom" data-label="Planta decorativa · img/planta-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
-  <div class="deco br rv zoom" style="--d:.2s" data-label="Planta decorativa · img/planta-2.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+<section id="mensaje" class="dorado dist">
+  <div class="deco f-izq rv zoom" data-label="Flor izquierda · img/flor-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco f-der rv zoom" style="--d:.2s" data-label="Flor derecha · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
   <div class="wrap">
     <h2 class="script rv up">Queridos amigos y familia</h2>
     <div class="filete rv up" style="--d:.2s"></div>
@@ -257,16 +274,25 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
   <div class="wrap">
     <h2 class="script rv up">Nuestros momentos</h2>
     <div class="galeria">
-      <div class="slot rv up" style="color:var(--oro)" data-label="Foto galería 1 · img/galeria-1.jpg"><img src="img/foto-5.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
-      <div class="slot rv up" style="--d:.2s;color:var(--oro)" data-label="Foto galería 2 · img/galeria-2.jpg"><img src="img/foto-4.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
-      <div class="slot rv up" style="--d:.4s;color:var(--oro)" data-label="Foto galería 3 · img/galeria-3.jpg"><img src="img/foto-3.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+    <div class="g-fila a">
+      <div class="slot rv up" style="--d:0s;color:var(--oro)" data-label="Vertical · img/foto-5.jpg"><img src="img/foto-5.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:0.15s;color:var(--oro)" data-label="Vertical · img/foto-4.jpg"><img src="img/foto-4.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up h" style="--d:0.3s;color:var(--oro)" data-label="Horizontal · img/foto-9.jpg"><img src="img/foto-9.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:0.45s;color:var(--oro)" data-label="Vertical · img/foto-3.jpg"><img src="img/foto-3.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+    </div>
+    <div class="g-fila b">
+      <div class="slot rv up h" style="--d:0.6s;color:var(--oro)" data-label="Horizontal · img/foto-10.jpg"><img src="img/foto-10.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:0.75s;color:var(--oro)" data-label="Vertical · img/foto-6.jpg"><img src="img/foto-6.jpg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:0.9s;color:var(--oro)" data-label="Vertical · img/foto-7.jpg"><img src="img/foto-7.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+      <div class="slot rv up" style="--d:1.05s;color:var(--oro)" data-label="Vertical · img/foto-8.jpg"><img src="img/foto-8.jpeg" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+    </div>
     </div>
   </div>
 </section>
 
 <!-- ============ CONFIRMAR ASISTENCIA ============ -->
 <section id="confirmar" class="dorado">
-  <div class="deco tl rv zoom" data-label="Hojas · img/hojas-1.png"><img src="img/flor-1.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+
   <div class="deco cb rv zoom" style="--d:.4s" data-label="Guirnalda inferior · img/guirnalda.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
   <div class="wrap" style="padding-bottom:90px">
     <h2 class="script rv up">Confirma tu asistencia</h2>
@@ -276,7 +302,7 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
     <form class="card rv up" id="f-rsvp" style="--d:.35s" novalidate>
       <div class="corazon"><svg viewBox="0 0 24 24"><path d="M12 20s-7.5-4.6-7.5-10A4.3 4.3 0 0 1 12 7.4 4.3 4.3 0 0 1 19.5 10c0 5.4-7.5 10-7.5 10z"/></svg></div>
       <h3>Confirmar tu lugar</h3>
-      <p class="sub">Con mucho amor</p>
+      
 
       <label for="r-nombre">Nombre completo</label>
       <input id="r-nombre" type="text" placeholder="Ej. Andrea Ramírez" autocomplete="name" maxlength="80">
@@ -288,13 +314,23 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
       </select>
 
       <div class="fila-personas" id="fila-personas">
-        <label for="r-personas">¿Cuántos asistirán?</label>
-        <select id="r-personas">
-          <option value="1">1 persona</option>
-          <option value="2">2 personas</option>
-          <option value="3">3 personas</option>
-          <option value="4">4 personas</option>
-          <option value="5">5 personas</option>
+        <label for="r-adultos">¿Cuántos adultos asistirán?</label>
+        <select id="r-adultos">
+          <option value="1">1 adulto</option>
+          <option value="2">2 adultos</option>
+          <option value="3">3 adultos</option>
+          <option value="4">4 adultos</option>
+          <option value="5">5 adultos</option>
+        </select>
+
+        <label for="r-ninos">¿Cuántos niños asistirán?</label>
+        <select id="r-ninos">
+          <option value="0">Ninguno</option>
+          <option value="1">1 niño</option>
+          <option value="2">2 niños</option>
+          <option value="3">3 niños</option>
+          <option value="4">4 niños</option>
+          <option value="5">5 niños</option>
         </select>
       </div>
 
@@ -305,18 +341,14 @@ section{position:relative;padding:clamp(64px,10vw,120px) 24px;text-align:center;
       <p class="estado" id="r-estado" role="status"></p>
     </form>
 
-    <p class="dudas rv up">¿Tienes dudas? Escríbenos.</p>
-    <div class="contactos rv up" style="--d:.15s">
-      <div><h3>Diana</h3><small>Teléfono</small><a href="tel:+525535744177">55 3574 4177</a><small>Correo</small><a href="mailto:diana@correo.com">diana@correo.com</a></div>
-      <div><h3>Alejandro</h3><small>Teléfono</small><a href="tel:+525591969447">55 9196 9447</a><small>Correo</small><a href="mailto:andrsalezz@gmail.com">andrsalezz@gmail.com</a></div>
-    </div>
+    
   </div>
 </section>
 
 <!-- ============ LIBRO DE FIRMAS ============ -->
 <section id="libro" class="crema">
   
-  <div class="deco br rv zoom" style="--d:.2s" data-label="Flor decorativa · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
+  <div class="deco mini rv zoom" style="--d:.2s" data-label="Flor pequeña · img/flor-4.png"><img src="img/flor-4.png" alt="" onerror="this.parentNode.classList.add('empty')"></div>
   <div class="wrap">
     <h2 class="script rv up">Libro de firmas</h2>
     <p class="intro rv up" style="--d:.15s">Déjanos unas palabras para volver a este día una y otra vez. Tu mensaje formará parte de nuestra historia.</p>
@@ -396,8 +428,10 @@ $('f-rsvp').addEventListener('submit', e => {
   estado.className = 'estado'; estado.textContent = 'Abriendo WhatsApp…';
   let msg;
   if ($('r-asiste').value === 'si') {
-    const n = Number($('r-personas').value);
-    msg = `Hola, soy ${nombre}. ¡Confirmo mi asistencia a la boda de Diana y Alejandro! Asistiremos ${n} ${n === 1 ? 'persona' : 'personas'}.`;
+    const a = Number($('r-adultos').value), n = Number($('r-ninos').value);
+    const ta = `${a} ${a === 1 ? 'adulto' : 'adultos'}`;
+    const tn = n === 0 ? '' : ` y ${n} ${n === 1 ? 'niño' : 'niños'}`;
+    msg = `Hola, soy ${nombre}. ¡Confirmo mi asistencia a la boda de Diana y Alejandro! Asistiremos ${ta}${tn}.`;
   } else {
     msg = `Hola, soy ${nombre}. Lamentablemente no podré asistir a la boda de Diana y Alejandro. ¡Les deseo lo mejor!`;
   }
